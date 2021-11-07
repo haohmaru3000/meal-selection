@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './favorites_screen.dart';
 import './categories_screen.dart';
+import '../widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -32,6 +33,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'].toString()),
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
@@ -42,12 +44,12 @@ class _TabsScreenState extends State<TabsScreen> {
         // type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             icon: const Icon(Icons.category),
             label: 'Categories',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             icon: const Icon(Icons.star),
             label: 'Favorites',
           ),
