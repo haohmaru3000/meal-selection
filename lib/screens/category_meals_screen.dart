@@ -4,7 +4,7 @@ import '../widgets/meal_item.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static const routeName = '/category-meals';
-   
+
   final List<Meal> availableMeals;
 
   CategoryMealsScreen(this.availableMeals);
@@ -51,19 +51,31 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       appBar: AppBar(
         title: Text(categoryTitle),
       ),
-      body: ListView.builder(
-        itemBuilder: (ctx, index) {
-          return MealItem(
-            id: displayedMeals[index].id,
-            title: displayedMeals[index].title,
-            imageUrl: displayedMeals[index].imageUrl,
-            duration: displayedMeals[index].duration,
-            affordability: displayedMeals[index].affordability,
-            complexity: displayedMeals[index].complexity,
-          );
-        },
-        itemCount: displayedMeals.length,
+      body: ListView(
+        children: displayedMeals
+            .map((item) => MealItem(
+                  id: item.id,
+                  title: item.title,
+                  imageUrl: item.imageUrl,
+                  affordability: item.affordability,
+                  complexity: item.complexity,
+                  duration: item.duration,
+                ))
+            .toList(),
       ),
+      // body: ListView.builder(
+      //   itemBuilder: (ctx, index) {
+      //     return MealItem(
+      //       id: displayedMeals[index].id,
+      //       title: displayedMeals[index].title,
+      //       imageUrl: displayedMeals[index].imageUrl,
+      //       duration: displayedMeals[index].duration,
+      //       affordability: displayedMeals[index].affordability,
+      //       complexity: displayedMeals[index].complexity,
+      //     );
+      //   },
+      //   itemCount: displayedMeals.length,
+      // ),
     );
   }
 }

@@ -8,15 +8,6 @@ class CategoriesScreen extends StatelessWidget {
     return GridView(
       // Grid is just like ListView (is scrollable as default)
       padding: const EdgeInsets.all(25),
-      children: DUMMY_CATEGORIES
-          .map(
-            (catData) => CategoryItem(
-              catData.id,
-              catData.title,
-              catData.color,
-            ),
-          )
-          .toList(),
       /* GridDelegate: means for the grid, this takes care about structuring, layouting the grid
           WithMaxCrossAxisExtent: means this is preconfigured class to define a max width for each grid item,
                                   and then it automatically creates as many columns as we can fit items with that 
@@ -34,6 +25,15 @@ class CategoriesScreen extends StatelessWidget {
             20, // how much distance is between rows or columns in the grid.
         mainAxisSpacing: 20,
       ),
+      children: DUMMY_CATEGORIES
+          .map(
+            (catData) => CategoryItem(
+              catData.id,
+              catData.title,
+              catData.color,
+            ),
+          )
+          .toList(),
     );
   }
 }

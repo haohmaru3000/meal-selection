@@ -8,7 +8,7 @@ class TabsScreen extends StatefulWidget {
   final List<Meal> favoriteMeals;
 
   TabsScreen(this.favoriteMeals);
-  
+
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }

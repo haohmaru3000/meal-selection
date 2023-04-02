@@ -65,18 +65,19 @@ class _MyAppState extends State<MyApp> {
   bool _isMealFavorite(String id) {
     return _favoriteMeals.any((meal) => meal.id == id);
   }
-  
+
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
         fontFamily: 'Raleway',
         canvasColor: const Color.fromRGBO(255, 254, 229, 1),
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.pink,
-          accentColor: Colors.amber,
-          errorColor: Colors.red,
+        colorScheme: theme.colorScheme.copyWith(
+          primary: Colors.pink,
+          secondary: Colors.amber,
+          error: Colors.red,
         ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
@@ -84,14 +85,14 @@ class _MyAppState extends State<MyApp> {
             fontSize: 20,
           ),
         ),
-        textTheme: const TextTheme(
-          bodyText1: TextStyle(
+        textTheme: theme.textTheme.copyWith(
+          bodyLarge: const TextStyle(
             color: Color.fromRGBO(20, 51, 51, 1),
           ),
-          bodyText2: TextStyle(
+          bodyMedium: const TextStyle(
             color: Color.fromRGBO(20, 51, 51, 1),
           ),
-          headline6: TextStyle(
+          titleLarge: const TextStyle(
             fontSize: 20,
             fontFamily: 'RobotoCondensed',
             fontWeight: FontWeight.bold,
@@ -101,12 +102,15 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/', // default is '/'
       routes: {
         '/': (ctx) => TabsScreen(_favoriteMeals),
-        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(_availableMeals),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(_toggleFavorite, _isMealFavorite),
+        CategoryMealsScreen.routeName: (ctx) =>
+            CategoryMealsScreen(_availableMeals),
+        MealDetailScreen.routeName: (ctx) =>
+            MealDetailScreen(_toggleFavorite, _isMealFavorite),
         FiltersScreen.routeName: (ctx) => FiltersScreen(_filters, _setFilters),
       },
       onGenerateRoute: (settings) {
         print(settings.arguments);
+        return null;
         // if (settings.name == '/meal-detail') {
         //   return ...;
         // }

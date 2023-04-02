@@ -48,7 +48,7 @@ class MainDrawer extends StatelessWidget {
             Icons.restaurant,
             () {
               // pushReplacementNamed: replace the existing page in the Stack
-              Navigator.of(context).pushReplacementNamed('/'); 
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           buildListTile(
